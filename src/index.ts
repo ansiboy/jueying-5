@@ -1,0 +1,1 @@
+export { ComponentDesigner as PageDesigner } from "./ui/component-designer";

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "target": "ES2021",
+    "module": "CommonJS",
+    "outDir": "../out",
+  }
+}

@@ -1,0 +1,1 @@
+export type ComponentTypes = { [name: string]: typeof Function };
