@@ -1,4 +1,4 @@
-import TextInput, { Props } from "../../../src/providers/html/components/text-input";
+import TextInput, { Props } from "../../components/text-input";
 import { JSDOM } from "jsdom";
 
 export function createTextInput(elementId: string, props: Props) {
@@ -28,7 +28,7 @@ describe("text component test", function () {
         element.id = "text";
         let props: Props = { value: "Hello World!" };
         let component = new TextInput(element, props);
-        component.render(props);
+        component.setProps(props);
 
         expect(element.value).toEqual(props.value);
         console.log(component.element.outerHTML);

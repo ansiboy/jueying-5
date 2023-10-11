@@ -1,3 +1,4 @@
+import { ComponentProps } from "./component-props";
 import { ComponentStatus } from "./component-status";
 
 
@@ -14,5 +15,6 @@ export interface ComponentData {
     // parentId?: string;
     // name?: string;
     status?: ComponentStatus,
-    children?: ComponentData[]
+    children?: ComponentData[],
+    dataSource?: any[],
 }

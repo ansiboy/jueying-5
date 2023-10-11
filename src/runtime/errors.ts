@@ -9,6 +9,11 @@ export class Errors {
         return new Error(msg);
     }
 
+    static argumentTypeIncorrect(paramName: string, expectedType: string, actualType: string) {
+        let msg = `Argument '${paramName}' type incorrect, exprected ${expectedType}, actual is ${actualType}.`;
+        return new Error(msg);
+    }
+
     static componentTypeNotLoad(componentType: string) {
         let msg = `Component type '${componentType}' is not loaded.`;
         return new Error(msg);

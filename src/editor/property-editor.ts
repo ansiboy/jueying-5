@@ -28,7 +28,7 @@ export class PropertyEditor<T> {
         this.#components.forEach(c => {
             let props: any = {};
             props[name] = value;
-            c.render(props);
+            c.setProps(props);
         })
     }
 }

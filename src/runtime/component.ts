@@ -1,3 +1,4 @@
 export interface Component<T = any> {
-    render(props: T): void;
+    dataSource?: any[];
+    setProps(props: T): void;
 }

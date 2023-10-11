@@ -1,4 +1,4 @@
-import Container, { Props } from "../../../src/providers/html/components/container";
+import { Container, ContainerProps as Props } from "../../../src/runtime";
 import { JSDOM } from "jsdom";
 import { createButton } from "./button.test";
 import { createTextInput } from "./text.test";

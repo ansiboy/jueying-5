@@ -23,7 +23,7 @@ export class ComponentDesigner {
 
     }
 
-    render(props: Props) {
+    setProps(props: Props) {
 
     }
 

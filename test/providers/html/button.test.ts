@@ -1,4 +1,4 @@
-import Button, { Props } from "../../../src/providers/html/components/button";
+import Button, { Props } from "../../components/button";
 import { JSDOM } from "jsdom";
 
 export function createButton(elementId: string, props: Props) {
@@ -22,7 +22,7 @@ describe("button component test", function () {
         element.id = "button";
         let props: Props = { text: "Click ME" };
         let component = new Button(element, props);
-        component.render(props);
+        component.setProps(props);
 
         expect(component.element.innerHTML).toEqual(props.text);
     })

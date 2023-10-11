@@ -1,15 +1,17 @@
-import { Errors } from "./errors";
+import { Component } from "../component";
+import { Errors } from "../errors";
 
-export class HtmlComponent<T extends Object>  {
+export class RawComponent<T extends Object = {}> implements Component {
     #element: HTMLElement;
     #props: T;
 
-    protected children: HtmlComponent<any>[];
+    protected children: RawComponent<any>[];
 
-    constructor(element: HTMLElement, props: T, children?: HtmlComponent<any>[]) {
+    constructor(element: HTMLElement, props: T, children?: RawComponent<any>[]) {
         if (!element) throw Errors.argumentNull('element');
         if (!element.id) throw Errors.elementIdEmpty();
         if (!props) throw Errors.argumentNull("props");
+        if (typeof props != "object") throw Errors.argumentTypeIncorrect("props", "object", typeof props);
 
         let tagName = (this.constructor as any).tagName;
         if (!tagName)
@@ -19,11 +21,18 @@ export class HtmlComponent<T extends Object>  {
             throw Errors.elementTagNameIncorrect(tagName, element.tagName);
         }
 
+        //TODO: 检查 ID 是否重复
+        if (children != null) {
+            children.forEach(c => {
+                element.appendChild(c.element);
+            })
+        }
+
         this.#element = element;
         this.#props = props;
         this.children = children || [];
 
-        this.render(this.#props);
+        this.setProps(this.#props);
     }
 
     get element() {
@@ -38,7 +47,7 @@ export class HtmlComponent<T extends Object>  {
         return this.#props;
     }
 
-    render(props: Partial<T>): void {
+    setProps(props: Partial<T>): void {
         Object.assign(this.#props, props);
     }
 

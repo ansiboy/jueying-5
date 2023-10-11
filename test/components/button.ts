@@ -1,4 +1,4 @@
-import { HtmlComponent } from "../html-component";
+import { RawComponent as HtmlComponent } from "../../src/runtime/components/raw-component";
 
 export interface Props {
     text: string
@@ -6,9 +6,10 @@ export interface Props {
 
 export default class Button extends HtmlComponent<Props>  {
     static tagName = "BUTTON";
+    static typeName = "Button";
 
-    render(props: Partial<Props>): void {
-        super.render(props);
+    setProps(props: Partial<Props>): void {
+        super.setProps(props);
         let element = this.element as HTMLButtonElement;
         element.innerHTML = this.props.text;
     }
